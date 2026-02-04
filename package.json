@@ -1,0 +1,41 @@
+{
+  "name": "@codegefluester/infra-blocks",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Opiniated building blocks for infrastructure-as-code. Focused on SST and AWS for now, more later.",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc",
+    "prepublishOnly": "pnpm run build"
+  },
+  "peerDependencies": {
+    "sst": "^3.0.0"
+  },
+  "keywords": [
+    "infrastructure",
+    "iac",
+    "infrastructure-as-code",
+    "sst",
+    "aws"
+  ],
+  "license": "MIT",
+  "packageManager": "pnpm@10.11.0",
+  "repository": "codegefluester/infra-blocks",
+  "devDependencies": {
+    "sst": "^3.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0"
+  }
+}
