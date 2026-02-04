@@ -95,6 +95,7 @@ const PRESIGNED_URL_PARAMS = {
 } as const;
 
 // Stub environment variables before importing handler
+vi.stubEnv("AWS_REGION", "us-east-1");
 vi.stubEnv("BUCKET_NAME", TEST_CONFIG.BUCKET_NAME);
 vi.stubEnv(
   "ALLOWED_MIME_TYPES",
