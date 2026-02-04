@@ -95,7 +95,11 @@ const PRESIGNED_URL_PARAMS = {
 } as const;
 
 // Stub environment variables before importing handler
+// AWS SDK configuration (required for S3Client and presigner)
 vi.stubEnv("AWS_REGION", "us-east-1");
+vi.stubEnv("AWS_ACCESS_KEY_ID", "test-access-key");
+vi.stubEnv("AWS_SECRET_ACCESS_KEY", "test-secret-key");
+// Handler-specific configuration
 vi.stubEnv("BUCKET_NAME", TEST_CONFIG.BUCKET_NAME);
 vi.stubEnv(
   "ALLOWED_MIME_TYPES",
