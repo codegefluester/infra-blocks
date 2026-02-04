@@ -17,6 +17,9 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
     "typecheck": "tsc",
     "prepublishOnly": "pnpm run build"
   },
@@ -34,8 +37,15 @@
   "packageManager": "pnpm@10.11.0",
   "repository": "codegefluester/infra-blocks",
   "devDependencies": {
+    "@aws-sdk/client-s3": "^3.0.0",
+    "@aws-sdk/s3-request-presigner": "^3.0.0",
+    "@types/aws-lambda": "^8.10.0",
+    "@types/node": "^22.0.0",
+    "@vitest/ui": "^2.0.0",
+    "aws-sdk-client-mock": "^4.0.0",
     "sst": "^3.0.0",
     "tsup": "^8.0.0",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "vitest": "^2.0.0"
   }
 }
