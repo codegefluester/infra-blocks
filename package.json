@@ -12,7 +12,9 @@
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "src/sst/aws/webhook-buffer/services",
+    "src/sst/aws/webhook-buffer/handler.ts"
   ],
   "scripts": {
     "build": "tsup",
@@ -22,7 +24,9 @@
     "prepublishOnly": "pnpm run build"
   },
   "peerDependencies": {
-    "sst": "^3.0.0"
+    "sst": "^4.0.0",
+    "@aws-sdk/client-s3": "^3.0.0",
+    "@aws-sdk/s3-request-presigner": "^3.0.0"
   },
   "keywords": [
     "infrastructure",
@@ -35,8 +39,11 @@
   "packageManager": "pnpm@10.11.0",
   "repository": "codegefluester/infra-blocks",
   "devDependencies": {
-    "sst": "^3.0.0",
+    "@types/node": "^25.3.0",
+    "prettier": "^3.8.1",
+    "sst": "^4.0.0",
     "tsup": "^8.0.0",
     "typescript": "^5.0.0"
-  }
+  },
+  "dependencies": {}
 }
