@@ -3,6 +3,7 @@ import {
   PutObjectCommand,
   ListObjectsV2Command,
   GetObjectCommand,
+  DeleteObjectCommand,
 } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { randomUUID } from "crypto";
@@ -119,6 +120,14 @@ async function list(req: NormalizedRequest) {
   return response(200, { urls, nextCursor });
 }
 
+async function deletePayload(req: NormalizedRequest) {
+  const key = req.path.split("/").slice(2).join("/");
+  if (!key) return response(400, { error: "Missing payload key" });
+
+  await s3.send(new DeleteObjectCommand({ Bucket: BUCKET, Key: key }));
+  return response(204);
+}
+
 export const handler = async (event: any) => {
   let req: NormalizedRequest;
 
@@ -136,6 +145,11 @@ export const handler = async (event: any) => {
   // Handle listing webhooks
   if (req.method === "GET" && req.path.startsWith("/webhooks/")) {
     return list(req);
+  }
+
+  // Handle deleting a payload
+  if (req.method === "DELETE" && req.path.startsWith("/payloads/")) {
+    return deletePayload(req);
   }
 
   return response(404, { error: "Not found" });
